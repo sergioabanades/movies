@@ -12,11 +12,17 @@ const HomePage: React.FC = () => {
   const [movies, setMovies] = useState<any[]>([]);
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('');
-  const [selectedGenre, setSelectedGenre] = useState('');
+  const [selectedGenre, setSelectedGenre] = useState('');  
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1); // Estado para la página actual
+  const [totalPages, setTotalPages] = useState<number>(0); // Estado para el total de páginas
+
 
   const handleSearch = async () => {
-    const results = await fetchMovies(query);
-    setMovies(results);
+    const data = await fetchMovies(query);
+    setTotalPages(data.total_pages);   
+    setMovies(data.results);
   };
 
 
@@ -27,17 +33,19 @@ const HomePage: React.FC = () => {
                 api_key: API_KEY,
                 language: 'es-ES', 
                 with_genres: selectedGenre, 
+                page: currentPage
             };
 
             const response = await axios.get(`${BASE_URL}/discover/movie`, { params });
+            setTotalPages(response.data.total_pages);        
             setMovies(response.data.results);
         } catch (error) {
-            console.error('Error fetching movies:', error);
+            console.error('Error retornando películas:', error);
         }
     };
 
     fetchMovies();
-}, [selectedGenre]);
+}, [selectedGenre, currentPage]);
 
   return (
     <div>
@@ -49,6 +57,24 @@ const HomePage: React.FC = () => {
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
+
+      {/* Paginación */}
+      <div>
+        <button 
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+        >
+            Anterior
+        </button>
+        <span>Página {currentPage} de {totalPages}</span>
+        <button 
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+        >
+            Siguiente
+        </button>
+    </div>
+
     </div>
   );
 };
