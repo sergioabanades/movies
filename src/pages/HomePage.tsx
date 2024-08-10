@@ -5,8 +5,8 @@ import Filter from '../components/Filter';
 import GenreFilter from '../components/GenreFilter';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const API_KEY = '0eca087dc00a8d46e2179d780d4ada5a';
+import { API_KEY } from '../configs/config';
+import { BASE_URL } from '../configs/config';
 
 const HomePage: React.FC = () => {
   const [movies, setMovies] = useState<any[]>([]);
@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
                 with_genres: selectedGenre, 
             };
 
-            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie`, { params });
+            const response = await axios.get(`${BASE_URL}/discover/movie`, { params });
             setMovies(response.data.results);
         } catch (error) {
             console.error('Error fetching movies:', error);
