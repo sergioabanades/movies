@@ -1,43 +1,43 @@
 .footer {
-    position: sticky; // Fija el footer en la parte inferior de la página
+    position: sticky; 
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #f8f9fa; // Color de fondo del footer
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); // Sombra superior
-    padding: 10px 20px; // Espaciado interno
+    background-color: #f8f9fa; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 10px 20px; 
     display: flex;
-    justify-content: center; // Centra el contenido horizontalmente
-    align-items: center; // Centra el contenido verticalmente
-    z-index: 1000; // Asegura que el footer esté sobre otros elementos
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000; 
   
     .pagination {
       display: flex;
       align-items: center;
   
       .pagination-button {
-        background-color: #007bff; // Color del botón
-        color: white; // Color del texto
-        border: none; // Sin borde
-        border-radius: 5px; // Bordes redondeados
-        padding: 8px 15px; // Espaciado interno
-        margin: 0 10px; // Margen horizontal
-        cursor: pointer; // Cambia el cursor al pasar el mouse
-        transition: background-color 0.3s ease; // Transición suave para el hover
+        background-color: #007bff; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        padding: 8px 15px; 
+        margin: 0 10px; 
+        cursor: pointer; 
+        transition: background-color 0.3s ease; 
   
         &:hover {
-          background-color: #0056b3; // Color del botón en hover
+          background-color: #0056b3; 
         }
   
         &:disabled {
-          background-color: #d6d6d6; // Color del botón deshabilitado
-          cursor: not-allowed; // Cursor no permitido
+          background-color: #d6d6d6; 
+          cursor: not-allowed; 
         }
       }
   
       .pagination-info {
-        margin: 0 15px; // Margen horizontal
-        font-weight: bold; // Texto en negrita
+        margin: 0 15px; 
+        font-weight: bold; 
       }
     }
   }

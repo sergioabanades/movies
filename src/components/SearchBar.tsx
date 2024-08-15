@@ -1,4 +1,6 @@
 import React, { FormEvent } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
 
 interface SearchBarProps {
     onSearch: () => Promise<void>;
@@ -8,20 +10,23 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, setQuery, query }) => {
     const handleSubmit = (event: FormEvent) => {
-      event.preventDefault(); // Evita el envío del formulario
-      onSearch(); // Llama a la función de búsqueda
+      event.preventDefault(); 
+      onSearch(); 
     };
 
     return (
-        <div>
+        <>
             <input 
                 type="text" 
                 value={query} 
                 onChange={(e) => setQuery(e.target.value)} 
                 placeholder="Buscar películas..."
+                className="search-input"
             />
-            <button onClick={onSearch}>Buscar</button>
-        </div>
+            <IconButton type="submit" onClick={onSearch}  className="search-button">
+              <SearchIcon />
+            </IconButton>
+        </>
     );
 };
 

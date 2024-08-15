@@ -9,7 +9,7 @@ interface Genre {
 
 interface GenreFilterProps {
     onGenreChange: (genreId: number) => void;
-    selectedGenre: string; // Agrega selectedGenre aquí
+    selectedGenre: string; 
 }
 
 const GenreFilter: React.FC<GenreFilterProps> = ({ onGenreChange, selectedGenre }) => {

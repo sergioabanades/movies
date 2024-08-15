@@ -10,7 +10,7 @@
   import Header from '../components/Header';
   import Grid from '@mui/material/Grid';
   import Footer from '../components/Footer';
-  //import './HomePage.scss'; // Si tienes estilos adicionales para la página
+  import '../components/styles/HomePage.scss';
 
   const HomePage: React.FC = () => {
     const [movies, setMovies] = useState<any[]>([]);
@@ -20,15 +20,12 @@
     const [loading, setLoading] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(1); // Estado para la página actual
     const [totalPages, setTotalPages] = useState<number>(0); // Estado para el total de páginas
-    const [searchSource, setSearchSource] = useState<string>(''); // Nuevo estado para la fuente de búsqueda
-
-
+    const [searchSource, setSearchSource] = useState<string>(''); // estado para la fuente de búsqueda
 
     const handleSearch = async () => {
       setCurrentPage(1); // Reiniciar a la primera página en una nueva búsqueda
       setSelectedGenre(''); // Resetear el género seleccionado
       setSearchSource('searchbar'); // Indicar que la búsqueda proviene del SearchBar
-      //console.log('Buscando:', query); // Agrega esto para verificar el valor de query
       await loadMovies(); 
   };
 
@@ -63,7 +60,7 @@
     };
 
     useEffect(() => {
-      loadMovies(); // Llamar a loadMovies cuando se cambie el género o la página actual
+      loadMovies(); 
     }, [selectedGenre, currentPage, query, searchSource]); 
 
     return (
@@ -77,7 +74,7 @@
       />
         <div>
           {loading ? (
-            <p>Cargando películas...</p>
+            <p className='loading'>Cargando películas...</p>
           ) : (
             <Container>
               <Row>
