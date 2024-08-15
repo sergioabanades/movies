@@ -1,0 +1,70 @@
+// src/styles/MovieDetail.scss
+
+.movie-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f5f7fa;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+  
+    .back-button {
+      margin: 20px;
+      background-color: #40a9ff;
+      color: #fff;
+      &:hover {
+        background-color: #569bd3;
+      }
+    }
+  }
+  
+  .movie-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1000px;
+    width: 100%;
+  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    &__poster {
+      width: 100%;
+      max-width: 400px;
+      border-right: 1px solid #eee;
+    }
+  
+    &__info {
+      padding: 20px;
+      flex-grow: 1;
+    }
+  
+    &__title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+  
+    &__tagline {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #777;
+      font-style: italic;
+    }
+  
+    &__overview {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #555;
+    }
+  }
+  

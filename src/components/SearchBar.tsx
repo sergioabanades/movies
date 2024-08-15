@@ -3,13 +3,13 @@ import React, { FormEvent } from 'react';
 interface SearchBarProps {
     onSearch: () => Promise<void>;
     setQuery: React.Dispatch<React.SetStateAction<string>>;
-    query: string; // Agregar la prop query aquí
+    query: string; 
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, setQuery, query }) => {
     const handleSubmit = (event: FormEvent) => {
       event.preventDefault(); // Evita el envío del formulario
-      //onSearch(); // Llama a la función de búsqueda
+      onSearch(); // Llama a la función de búsqueda
     };
 
     return (
