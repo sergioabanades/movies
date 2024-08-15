@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API_KEY } from '../configs/config';
 
 interface Genre {
     id: number;
     name: string;
 }
 
-const API_KEY = '0eca087dc00a8d46e2179d780d4ada5a';
+interface GenreFilterProps {
+    onGenreChange: (genreId: number) => void;
+    selectedGenre: string; // Agrega selectedGenre aquí
+}
 
-const GenreFilter: React.FC<{ onGenreChange: (genreId: number) => void }> = ({ onGenreChange }) => {
-    const [genres, setGenres] = useState<Genre[]>([]); // Usa la interfaz para tipar el estado
+const GenreFilter: React.FC<GenreFilterProps> = ({ onGenreChange, selectedGenre }) => {
+    const [genres, setGenres] = useState<Genre[]>([]);
 
     useEffect(() => {
         const fetchGenres = async () => {
@@ -22,7 +26,7 @@ const GenreFilter: React.FC<{ onGenreChange: (genreId: number) => void }> = ({ o
                 });
                 setGenres(response.data.genres);
             } catch (error) {
-                console.error('Error fetching genres:', error);
+                console.error('Error mostrando géneros:', error);
             }
         };
 
@@ -30,7 +34,7 @@ const GenreFilter: React.FC<{ onGenreChange: (genreId: number) => void }> = ({ o
     }, []);
 
     return (
-        <select onChange={(e) => onGenreChange(Number(e.target.value))}>
+        <select onChange={(e) => onGenreChange(Number(e.target.value))} value={selectedGenre}>
             <option value="">Todos los Géneros</option>
             {genres.map((genre) => (
                 <option key={genre.id} value={genre.id}>
