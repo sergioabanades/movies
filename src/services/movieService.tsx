@@ -28,6 +28,7 @@ export const fetchMovieDetails = async (id: number) => {
   const response = await axios.get(`${BASE_URL}/movie/${id}`, {
     params: {
       api_key: API_KEY,
+      language: 'es-ES'
     },
   });
   return response.data;
